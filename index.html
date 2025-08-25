@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .skill-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 8px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 1s ease-in-out;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(102, 126, 234, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .typewriter {
+            border-right: 2px solid white;
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: white; }
+            50% { border-color: transparent; }
+        }
+        
+        .profile-image {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content {
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black bg-opacity-90 backdrop-blur-sm z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-white text-2xl font-bold">My Portfolio</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-purple-300">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-purple-300">About</a>
+                <a href="#skills" class="nav-link text-white hover:text-purple-300">Skills</a>
+                <a href="#projects" class="nav-link text-white hover:text-purple-300">Projects</a>
+                <a href="#contact" class="nav-link text-white hover:text-purple-300">Contact</a>
+            </div>
+            <div class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-content flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="container mx-auto px-6 z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content on Left -->
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Hello, I'm <span class="text-purple-300">Alyssa Caguin</span></h1>
+                    <div class="typewriter text-xl md:text-2xl mb-8 inline-block">
+                        Data Specialist & UI/UX Designer
+                    </div>
+                    <p class="text-lg md:text-xl mb-8">Creating digital experiences that combine cutting-edge technology with elegant design.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                            View My Work
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-purple-700 px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                            Download CV
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture on Right -->
+                <div class="flex justify-center md:justify-end">
+                <div class="w-96 h-96 md:w-[28rem] md:h-[28rem] rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center overflow-hidden profile-image">
+                    <img src="C:\Users\USER\Desktop\MyPortfolio\images\dp.jpg" 
+                    alt="“Professional headshot of Alyssa Caguin, a data analyst with a confident and approachable smile, wearing business casual attire, standing against a modern office background with soft natural lighting." 
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-r from-purple-400 to-blue-400 flex items-center justify-center\'><i class=\'fas fa-user text-6xl text-white\'></i></div>'">
+             </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">About Me</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-purple-700 mb-6">Education</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-lg">College - Laguna State Polytechnic University </h4>
+                            <p class="text-purple-600">Siniloan Campus| 2022-Present</p>
+                            <p class="text-gray-600 mt-2">Bachelor of Science in Information Techlogy, Major in Service Management</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-lg">Senior High School- Balian Integrated National High School</h4>
+                            <p class="text-purple-600">Balian| 2020-2022</p>
+                            <p class="text-gray-600 mt-2">Technical-Vocational-Livelihood - Information and Communication Technology </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-lg">Juinor High School- Paete Science and Business College</h4>
+                            <p class="text-purple-600">Paete| 2016-2020</p>
+                            <p class="text-gray-600 mt-2">Junior High School Graduate</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-lg">Elementary- Quinale Elementary School</h4>
+                            <p class="text-purple-600">Paete| 2010-2016</p>
+                            <p class="text-gray-600 mt-2">Elementary Graduate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-purple-700 mb-6">Hobbies & Interests</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-purple-100 rounded-lg">
+                            <i class="fas fa-paintbrush text-3xl text-purple-600 mb-2"></i>
+                            <p class="font-semibold">Artist</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-100 rounded-lg">
+                            <i class="fas fa-camera text-3xl text-purple-600 mb-2"></i>
+                            <p class="font-semibold">Photography</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-100 rounded-lg">
+                            <i class="fas fa-television text-3xl text-purple-600 mb-2"></i>
+                            <p class="font-semibold">Watching</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-100 rounded-lg">
+                            <i class="fas fa-book text-3xl text-purple-600 mb-2"></i>
+                            <p class="font-semibold">Reading</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-gray-600">When I'm not coding, you'll find me being HMUA, watching movies, taking random pictures like sunsets, etc and reading books.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">Skills & Certifications</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-purple-700 mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">SQL</span>
+                                <span class="text-purple-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Canva</span>
+                                <span class="text-purple-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">UI/UX Designer</span>
+                                <span class="text-purple-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Python</span>
+                                <span class="text-purple-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Excel</span>
+                                <span class="text-purple-600">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">Figma</span>
+                                <span class="text-purple-600">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-purple-700 mb-6">Certifications</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-lg">Lean Six Sigma PH</h4>
+                            <p class="text-purple-600">White Belt | 2025</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card p-0">
+                    <div class="relative">
+                        <img src="images\p1.jpg" alt="Cast of Unwind Short Film Project" class="w-full h-48 object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-48 bg-purple-200 flex items-center justify-center\'><i class=\'fas fa-image text-4xl text-purple-600\'></i></div>'"/>
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <button class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">UNWIND</h3>
+                        <p class="text-gray-600 mb-4">Short Film Project | 2024</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">Cast</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card card p-0">
+                    <div class="relative">
+                        <img src="images/p2.jpg" alt="One of the reaserchers and developers of EventSync" class="w-full h-48 object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-48 bg-purple-200 flex items-center justify-center\'><i class=\'fas fa-image text-4xl text-purple-600\'></i></div>'"/>
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <button class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Event Sync</h3>
+                        <p class="text-gray-600 mb-4">Web-Based Application |2025</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">php</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">html</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card card p-0">
+                    <div class="relative">
+                        <img src="images/p3.png " alt="One of the reaserchers and developers of Fix-it" class="w-full h-48 object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-48 bg-purple-200 flex items-center justify-center\'><i class=\'fas fa-image text-4xl text-purple-600\'></i></div>'"/>
+                        <div class="project-overlay flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <button class="bg-white text-purple-600 px-4 py-2 rounded-full font-semibold">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fix-It</h3>
+                        <p class="text-gray-600 mb-4">Web-Based Application |2024</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">php</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">html</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Get In Touch</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Let's work together!</h3>
+                    <p class="text-lg mb-6">I'm always interested in new opportunities and challenging projects. Feel free to reach out!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p>calyssarubie@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Phone</p>
+                                <p>+63 920 581 7354</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Location</p>
+                                <p>Laguna, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 mt-8">
+                        <a href="www.linkedin.com/in/alyssa-rubie-caguin-2b6737361" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                        <a href="https://github.com/Yssa08" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.facebook.com/alyssa.rubie08" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/caguin_alyssa/" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="card bg-white bg-opacity-10 backdrop-blur-sm p-8">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block mb-2">Name</label>
+                            <input type="text" class="w-full p-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white" placeholder="Your Name">
+                        </div>
+                        
+                        <div>
+                            <label class="block mb-2">Email</label>
+                            <input type="email" class="w-full p-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white" placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block mb-2">Message</label>
+                            <textarea rows="5" class="w-full p-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white" placeholder="Your message..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-white text-purple-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="hover:text-purple-300 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-purple-300 transition-colors">Terms of Service</a>
+            </div>
+            <p class="text-gray-400"> All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Simple typewriter effect
+        const phrases = [ 'UI/UX Designer', 'Researcher', 'Data Analyst'];
+        let currentPhrase = 0;
+        let currentLetter = 0;
+        let typingSpeed = 100;
+        let erasingSpeed = 50;
+        let pauseTime = 2000;
+        
+        function typeWriter() {
+            const typewriter = document.querySelector('.typewriter');
+            if (!typewriter) return;
+            
+            if (currentLetter < phrases[currentPhrase].length) {
+                typewriter.textContent = phrases[currentPhrase].substring(0, currentLetter + 1);
+                currentLetter++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                setTimeout(eraseText, pauseTime);
+            }
+        }
+        
+        function eraseText() {
+            const typewriter = document.querySelector('.typewriter');
+            if (currentLetter > 0) {
+                typewriter.textContent = phrases[currentPhrase].substring(0, currentLetter - 1);
+                currentLetter--;
+                setTimeout(eraseText, erasingSpeed);
+            } else {
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+        
+        // Start typewriter effect
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
